@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#365b48">
+  <title>CV | Trần Ngọc Hân</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --green: #365b48;
+      --green-dark: #263f34;
+      --sage: #dce5d8;
+      --sage-light: #f2f5ef;
+      --ink: #28332d;
+      --muted: #68746d;
+      --paper: #fffefa;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 36px 18px;
+      background: #e9eee7;
+      color: var(--ink);
+      font-family: Tahoma, Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    .page {
+      position: relative;
+      width: min(100%, 920px);
+      min-height: 1120px;
+      margin: 0 auto;
+      overflow: hidden;
+      background: var(--paper);
+      box-shadow: 0 18px 55px rgb(34 54 42 / 12%);
+    }
+
+    .top-band {
+      position: absolute;
+      inset: 0 0 auto;
+      height: 12px;
+      background: var(--green);
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      min-height: 1120px;
+    }
+
+    .sidebar {
+      position: relative;
+      padding: 56px 30px 42px;
+      background: var(--sage-light);
+    }
+
+    .portrait-wrap {
+      width: 174px;
+      height: 174px;
+      margin: 0 auto 30px;
+      padding: 7px;
+      border: 1px solid #aebdac;
+      border-radius: 50%;
+    }
+
+    .portrait {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center 38%;
+    }
+
+    .side-section {
+      margin-top: 30px;
+    }
+
+    .side-heading,
+    .section-heading {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 15px;
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .side-heading::after {
+      height: 1px;
+      flex: 1;
+      background: #cad5c8;
+      content: "";
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 13px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .contact-label {
+      display: block;
+      margin-bottom: 1px;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .contact-value,
+    .contact-value a {
+      color: var(--ink);
+      overflow-wrap: anywhere;
+      text-decoration: none;
+    }
+
+    .contact-with-qr {
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .contact-qr {
+      display: none;
+      width: 44px;
+      height: 44px;
+      flex: 0 0 auto;
+      image-rendering: pixelated;
+    }
+
+    .contact-value a:hover {
+      color: var(--green);
+      text-decoration: underline;
+    }
+
+    .side-copy {
+      margin: 0;
+      color: #46534b;
+      font-size: 14px;
+    }
+
+    .main {
+      position: relative;
+      padding: 89px 54px 60px;
+    }
+
+    .intro {
+      position: relative;
+      padding: 0 0 35px;
+      border-bottom: 1px solid #dfe5dc;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.19em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--green-dark);
+      font-family: Tahoma, Arial, sans-serif;
+      font-size: clamp(38px, 5vw, 54px);
+      font-weight: 400;
+      letter-spacing: -0.035em;
+      line-height: 1.08;
+    }
+
+    .subtitle {
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+      letter-spacing: 0.04em;
+    }
+
+    .main-section {
+      margin-top: 34px;
+    }
+
+    .section-heading {
+      margin-bottom: 18px;
+      font-size: 12px;
+    }
+
+    .section-heading::after {
+      height: 1px;
+      flex: 1;
+      background: #dfe5dc;
+      content: "";
+    }
+
+    .section-mark {
+      width: 20px;
+      height: 20px;
+      display: inline-grid;
+      flex: 0 0 auto;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--sage);
+      color: var(--green);
+      font-family: Tahoma, Arial, sans-serif;
+      font-size: 13px;
+      letter-spacing: 0;
+    }
+
+    .entry {
+      position: relative;
+      margin-left: 9px;
+      padding: 0 0 0 21px;
+      border-left: 1px solid #c8d4c6;
+    }
+
+    .entry + .entry {
+      margin-top: 22px;
+    }
+
+    .entry::before {
+      position: absolute;
+      top: 7px;
+      left: -5px;
+      width: 9px;
+      height: 9px;
+      border: 2px solid var(--paper);
+      border-radius: 50%;
+      background: #78927d;
+      box-shadow: 0 0 0 1px #78927d;
+      content: "";
+    }
+
+    .entry-title {
+      margin: 0;
+      color: var(--green-dark);
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .entry-meta {
+      margin: 3px 0 7px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .entry-copy {
+      margin: 0;
+      color: #46534b;
+    }
+
+    .quote-card {
+      margin-top: 34px;
+      padding: 19px 21px;
+      border-left: 3px solid #78927d;
+      background: var(--sage-light);
+      color: #46534b;
+      font-family: Tahoma, Arial, sans-serif;
+      font-size: 15px;
+      font-style: italic;
+    }
+
+    .plant-art {
+      position: absolute;
+      right: 23px;
+      bottom: 18px;
+      width: 86px;
+      height: 112px;
+      color: #a9bba8;
+      opacity: 0.72;
+    }
+
+    .print-button {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 1;
+      padding: 11px 17px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--green);
+      box-shadow: 0 5px 16px rgb(34 54 42 / 22%);
+      color: #fff;
+      cursor: pointer;
+      font: inherit;
+      font-size: 13px;
+    }
+
+    .print-button:hover {
+      background: var(--green-dark);
+    }
+
+    @media (max-width: 700px) {
+      body {
+        padding: 0;
+        background: var(--paper);
+      }
+
+      .page,
+      .layout {
+        min-height: 100vh;
+      }
+
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        padding: 42px 28px 30px;
+      }
+
+      .portrait-wrap {
+        width: 148px;
+        height: 148px;
+      }
+
+      .sidebar-details {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0 24px;
+      }
+
+      .side-section {
+        margin-top: 24px;
+      }
+
+      .main {
+        padding: 42px 28px 155px;
+      }
+
+      .plant-art {
+        bottom: 20px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .sidebar-details {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    @media print {
+      body {
+        padding: 0;
+        background: #fff;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+
+      .page,
+      .layout {
+        width: 210mm;
+        height: 297mm;
+        min-height: 0;
+        box-shadow: none;
+      }
+
+      .layout {
+        grid-template-columns: 72mm 1fr;
+        grid-template-rows: minmax(0, 1fr);
+      }
+
+      .sidebar {
+        padding: 12mm 9mm 8mm;
+      }
+
+      .main {
+        padding: 15mm 12mm 8mm;
+      }
+
+      .print-button {
+        display: none;
+      }
+
+      .contact-with-qr {
+        display: flex;
+      }
+
+      .contact-qr {
+        display: block;
+      }
+
+      .main-section,
+      .entry,
+      .quote-card {
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button class="print-button" type="button" onclick="window.print()" aria-label="In hoặc lưu CV dưới dạng PDF">
+    In / Lưu PDF
+  </button>
+
+  <article class="page">
+    <div class="top-band" aria-hidden="true"></div>
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="portrait-wrap">
+          <img
+            class="portrait"
+            src="491717793_1878032699676459_1780484918383053313_n.jpg"
+            alt="Ảnh chân dung Trần Ngọc Hân"
+          >
+        </div>
+
+        <div class="sidebar-details">
+          <section class="side-section" aria-labelledby="contact-heading">
+            <h2 class="side-heading" id="contact-heading">Liên hệ</h2>
+            <ul class="contact-list">
+              <li>
+                <span class="contact-label">Điện thoại / Zalo</span>
+                <div class="contact-value contact-with-qr">
+                  <a href="https://zalo.me/0792933463" target="_blank" rel="noopener noreferrer">0792 933 463</a>
+                  <img class="contact-qr" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALkAAAC5CAIAAAD7zwkLAAADL0lEQVR42u3dwVHEMAxGYS1DL1TAndK5UwHVhA4yu1iWlfh7VwhkM2+UHyPLj+M4AniCN48AXAFXwBVwBVwBVwCugCvgCrgCroArAFfAFXAFXAFXwBVsyPvIxR9fnzV3+fv98/xtvPTNTX5RkyeprsA7CFwBV7Bxtk3MTSOpeSQnrsqYPZ+kugKugCvgCmTbCfm0LPn2XF0te5LqCrgCroArkG2j17LmefQ7byQYuVZdAbgCroArkG1ro+55IB25Vl0BuAKugCvYJtuWBcORQJp47Q2epLoCroAr4Apk2/Ks91KbQc+vNnmS6gq4Aq6AK5Btm60njiTBxGsTWyPUFXgHgSsAV/AfHsdxRPtJXYk/edVQ2sSbXLXhTV0BV8AVcAWx77rtSHq9wSaukY+QuCKcmHzVFXAFXAFXsNO5ZIlRtywXJ0a/shXhVVN31RVwBVwBVxB37kmYt9oYV5iiMG/GQpOFWnUFXAFXwBXIttFrgu2qoV+Jy7iJp1HoSYB3ELgCriD0JFSfm5s4VWDeqWVx/UPb1BV4B4Er4Apk24y4WrasuSoJrtqVN+8jqCvgCrgCrsC5ZBOOwk3c0jZv19b5XZW1G+u3hXcQuAKuQLaN+xypMLJCumoQxHkQTozY6gq8g8AVcAWybUz/t/t5muvZBrtqJm9Zy7C6Aq6AK+AKNp5v+1IjQVRNgy2bEFbWuazfFt5B4Aq4Akw4l2zebKrE7WEjW9pGemYTZ9SOdC6rK/AOAlfAFYT5ttV5bdVxttFjNm7P5gd1BVwBV8AV7HR2QyzqMI0ew2FXNT+U/VmgroAr4Aq4gtio3zYuuE0rMScmznYoWwFXV8AVcAVcgWw7P4GOBLSy+bY3aDNQV8AVcAVcgWw7IZ/OC3eJJzs0GWNWtnlMXQFXwBVwBbJtXOmE2iZjZ5uczqCugCvgCrgC2bZZbFw1+mDeXrImv1ddAVfAFXAFG2fbsh7SkeaHsvm2Zf0b85Zx1RVwBVwBV7BTtl3VDDBvsXXk0IT7rRerK+AKuAKuIMy3hboCrgBcAVfAFXAFXAFXAK6AK+AKuAKugCvgCsAVcAVcAVdwWf4AnfEIsd5LpGUAAAAASUVORK5CYII=" alt="Mã QR Zalo">
+                </div>
+              </li>
+              <li>
+                <span class="contact-label">Facebook</span>
+                <div class="contact-value contact-with-qr">
+                  <a href="https://www.facebook.com/han.tran.0604" target="_blank" rel="noopener noreferrer">han.tran.0604</a>
+                  <img class="contact-qr" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALkAAAC5CAIAAAD7zwkLAAADPElEQVR42u3dS1LDQAxFUYViL6yAOUtnzgpYjZlnhKv1acfnTkP4uG7JD0UtP47jCOAfvLkE4Aq4Aq6AK+AKuAJwBVwBV8AVcAVcAbgCroAr4Aq4Aq7ghryvvPnj67Pnt/z9/vn/r1H3xW1/wtSVVFfgHgSugCu4cbZNzE0rWe/p555676mou5JPE3/Q1P8f6gq4Aq6AK7hTtk3Mp23JdyUXJ0bsqSuproAr4Aq4Atl2mlMpcqVh+vTelVxcFznVFXAFXAFXgCtn25XObAw1ptUVcAXgCriCK2fbtk7lSphtG+y9xJVUV8AVcAVcgWzbnvVOzQZc4tVLdITVFXAFXAFX8NLZdpN+4koSTIyrL3Al1RVwBVwBV3BtHsdx7L+pK/E777n9NnFrhD0JcA8CV8AVhL5t+fMI2qZi20LlSoqs6zXXJV91BVwBV8AV3Hje9tQ+rbbnktU1atvmCqaOtKkr4Aq4Aq4gXnkmYeqz8qnGZV0eT9xqVnfZ1RVwBVwBVxCv3Let62MmBrS2fQVTA8VmEuAeBK6AK0AMnyWLLQ+t7fmgB9kW7kHgCrgCRPdZsqmNWW2xceXVtpULdeO36gq4Aq6AK7jTTELdkoFTKxfqjrTVjf3W9YvN28I9CFwBVxBmEsrnbdvOZdV9qz3nbeuGoNUVcAVcAVcQ9tsOz5BOxdW2sd+2URB1BVwBV8AVxI36tiuBdCUIT+3GjbI1u4lRV98W7kHgCriC0LctP7/f9kCwxCNeKxH71MVJzOPmbeEeBK6AKwh92+5OZeLQ6MpJs8SWaN2+grYHoKkr4Aq4Aq7Ac8nqaXv+wiYP6E1sH5tJgHsQuAKuIMwkdK9SrRs43fOxCG2Ty+oK3IPAFXAFsm37Z+VtC7TqVh+0reZSV8AVcAVcAQqy7dQTeacGGDbZTKauwD0IXAFXgPpsG10jCm2jEZvM205Nhqgr4Aq4Aq5Att27I1y36iFxYdhUg1hdAVfAFXAFsu1mM6SJ+23bRoY3OeGmroAr4Aq4ghtn27YPx9satXsm36moq66AK+AKuIKw3xbqCrgCcAVcAVfAFXAFXAG4Aq6AK+AKuAKugCsAVcAVcwWX5A6wMKG2vbBDIAAAAAElFTkSuQmCC" alt="Mã QR Facebook">
+                </div>
+              </li>
+              <li>
+                <span class="contact-label">Năm sinh</span>
+                <div class="contact-value">06/04/2007</div>
+              </li>
+              <li>
+                <span class="contact-label">Quê quán</span>
+                <div class="contact-value">Xã Mỹ Tú, Cần Thơ (Sóc Trăng cũ)</div>
+              </li>
+              <li>
+                <span class="contact-label">Nơi ở hiện tại</span>
+                <div class="contact-value">Nhà trọ Thành Đạt, KDC 30, đường Nguyễn Văn Linh, Tân An, Cần Thơ</div>
+              </li>
+              <li>
+                <span class="contact-label">Khoảng cách đến nơi làm</span>
+                <div class="contact-value">Khoảng 400 m</div>
+              </li>
+            </ul>
+          </section>
+
+          <section class="side-section" aria-labelledby="schedule-heading">
+            <h2 class="side-heading" id="schedule-heading">Thời gian</h2>
+            <p class="side-copy">Có thể xoay ca linh động theo lịch học và làm được ca tối. 
+              Một ngày tối đa có thể làm 2 ca.</p>
+          </section>
+
+          <section class="side-section" aria-labelledby="salary-heading">
+            <h2 class="side-heading" id="salary-heading">Mức lương mong muốn</h2>
+            <p class="side-copy">18–20 / giờ (chính thức)</p>
+          </section>
+        </div>
+
+        <svg class="plant-art" viewBox="0 0 90 116" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M45 95V46M45 65C31 63 26 54 30 44C41 46 46 54 45 65ZM45 78C58 76 64 67 60 57C49 59 44 67 45 78Z" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M23 95H67L62 105H28L23 95Z" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/>
+          <path d="M34 92C36 86 41 82 45 80C49 82 54 86 56 92M38 49L40 53M53 62L57 61" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+          <path d="M10 105C17 101 21 101 27 105M64 108C71 104 76 104 82 108" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </aside>
+
+      <main class="main">
+        <header class="intro">
+          <p class="eyebrow">Hồ sơ ứng tuyển</p>
+          <h1>Trần<br>Ngọc Hân</h1>
+          <p class="subtitle">Sinh viên Luật kinh tế</p>
+        </header>
+
+        <section class="main-section" aria-labelledby="about-heading">
+          <h2 class="section-heading" id="about-heading"><span class="section-mark" aria-hidden="true">✳</span>Giới thiệu</h2>
+          <p class="entry-copy">Hiện là sinh viên ngành Luật kinh tế tại Trường Đại học Nam Cần Thơ. Có kinh nghiệm làm nhiều công việc bán hàng và dịch vụ; sẵn sàng học hỏi, làm việc linh động theo lịch học.</p>
+        </section>
+
+        <section class="main-section" aria-labelledby="education-heading">
+          <h2 class="section-heading" id="education-heading"><span class="section-mark" aria-hidden="true">✳</span>Học vấn</h2>
+          <div class="entry">
+            <h3 class="entry-title">Luật kinh tế</h3>
+            <p class="entry-meta">Trường Đại học Nam Cần Thơ</p>
+            <p class="entry-copy">Hiện đang theo học.</p>
+          </div>
+        </section>
+
+        <section class="main-section" aria-labelledby="experience-heading">
+          <h2 class="section-heading" id="experience-heading"><span class="section-mark" aria-hidden="true">✳</span>Kinh nghiệm</h2>
+          <div class="entry">
+            <h3 class="entry-title">Bán hoa dịp lễ</h3>
+            <p class="entry-copy">Từng tham gia bán hoa vào các ngày lễ.</p>
+          </div>
+          <div class="entry">
+            <h3 class="entry-title">Nhân viên part-time cửa hàng giặt ủi</h3>
+            <p class="entry-copy">Có kinh nghiệm làm việc bán thời gian tại cửa hàng giặt ủi.</p>
+          </div>
+          <div class="entry">
+            <h3 class="entry-title">Phụ bán tạp hóa</h3>
+            <p class="entry-copy">Từng hỗ trợ công việc bán hàng tại tiệm tạp hóa.</p>
+          </div>
+          <div class="entry">
+            <h3 class="entry-title">Review truyện</h3>
+            <p class="entry-copy">Có kinh nghiệm viết hoặc chia sẻ nội dung review truyện.</p>
+          </div>
+        </section>
+
+        <div class="quote-card">Linh động trong sắp xếp thời gian, sẵn sàng làm ca tối và cân bằng công việc với lịch học.Một ngày tối đa có thể làm 2 ca.</div>
+      </main>
+    </div>
+  </article>
+  <script>
+    const qrPatterns = [
+      "11111110010011001001101111111/10000010001110111001101000001/10111010111011101001101011101/10111010011101110001101011101/10111010001000100001101011101/10000010010001000111101000001/11111110101010101010101111111/00000000111011101101000000000/11101111101100110111011000100/00101100001100110110011101001/10111111110001000100110100111/01010000000100010100011010010/01111110100010001110011001011/00001100000111011110011001001/01100011001110111110010011011/01010001010011101111000011010/01110011011100110011011001011/01100101111100110000011001101/10101111011001000100011110011/01011001010100010000100101010/10010111000010001000111110000/00000000111111011100100010111/11111110111110111011101011011/10000010110011101111100011011/10111010110100110010111110000/10111010001100110011010110100/10111010100001000100100111001/10000010111100010000101110010/11111110100010001000110001011",
+      "11111110010010011111001111111/10000010001111010011101000001/10111010111010110001101011101/10111010011100011011001011101/10111010001000011111001011101/10000010010001110111001000001/11111110101010101010101111111/00000000111011010110100000000/11101111101100100111111000100/00110001101100000000011001001/01011110010001001100011000111/00100000100100001110011010010/11000010100010011101111001011/11100001110111000000111101001/01011111010110101010001101011/10010001101011101100100001010/11001110011100111101111101011/00110100100100101100111001101/10010110111001000010001100011/01010000000100010110101001010/10001011001010001101111110000/00000000100111001001100010111/11111110101110101101101011011/10000010101011100100100011011/10111010101100100110111110011/10111010011100101001100010111/10111010111001001100100111001/10000010111100011101100010010/11111110110010000101111111011"
+    ];
+
+    document.querySelectorAll(".contact-qr").forEach((image, index) => {
+      const rows = qrPatterns[index].split("/");
+      const path = rows.map((row, y) => {
+        let commands = "";
+        for (let x = 0; x < row.length;) {
+          if (row[x] !== "1") {
+            x++;
+            continue;
+          }
+          const start = x;
+          while (row[x] === "1") x++;
+          const width = x - start;
+          commands += `M${start} ${y}h${width}v1h-${width}z`;
+        }
+        return commands;
+      }).join("");
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="-4 -4 37 37"><rect x="-4" y="-4" width="37" height="37" fill="white"/><path fill="#263f34" d="${path}"/></svg>`;
+      image.src = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+    });
+  </script>
+</body>
+</html>
