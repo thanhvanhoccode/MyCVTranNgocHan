@@ -130,6 +130,14 @@
       text-decoration: none;
     }
 
+    .contact-value a {
+      color: var(--green);
+      text-decoration: underline;
+      text-decoration-color: #9aac9a;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+    }
+
     .contact-with-qr {
       align-items: center;
       justify-content: space-between;
@@ -145,8 +153,14 @@
     }
 
     .contact-value a:hover {
-      color: var(--green);
-      text-decoration: underline;
+      color: var(--green-dark);
+      text-decoration-color: var(--green-dark);
+    }
+
+    .contact-value a:focus-visible {
+      border-radius: 2px;
+      outline: 2px solid var(--green);
+      outline-offset: 3px;
     }
 
     .side-copy {
